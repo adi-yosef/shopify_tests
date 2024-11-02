@@ -1,15 +1,19 @@
+from playwright.sync_api import Page
 
-class BasePage:
-    def __init__(self, page) -> None:
+class UpMenuPage:
+    def __init__(self, page: Page) -> None:
         self.page = page
-
 
         self.home_link = page.get_by_role("link", name="Home")
         self.catalog_link = page.get_by_role("link", name="Catalog")
         self.contact_link = page.get_by_role("link", name="Contact")
+
         self.search_button = page.get_by_role("button", name="Search")
         self.cart_link = page.get_by_role("link", name="Cart")
-        self.shop_all_link = page.get_by_role("link", name="Shop all")
+        self.search_box = page.get_by_placeholder("Search")
+
+        self.cart_link_6_items = page.get_by_role("link", name="Cart 6 items")
+
 
 
     def click_on_home_link(self):
@@ -27,7 +31,9 @@ class BasePage:
     def click_on_cart_link(self):
         self.cart_link.click()
 
-    def click_on_shop_all_link(self):
-        self.shop_all_link.click()
+    def click_on_cart_link_6_items(self):
+        self.cart_link_6_items.click()
 
+    def fill_search_box(self, name: str):
+        self.search_box.fill(name)
 

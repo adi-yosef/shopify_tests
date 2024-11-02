@@ -4,7 +4,6 @@ class LoginPage:
     def __init__(self, page) -> None:
         self.page = page
 
-
         self.admin_password = src.config.config.TestData.ADMIN_PASS
         self.password_box = page.get_by_label("Enter store password")
         self.enter_button = page.get_by_role("button", name="Enter")
