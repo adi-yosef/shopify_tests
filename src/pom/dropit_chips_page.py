@@ -49,4 +49,26 @@ class DropItChipsPage(UpMenuPage):
     def click_on_continue_shopping(self):
         self.continue_shopping.click()
 
+    def add_chips_to_cart(
+            self,
+            quantity: str,
+            size: str
+    ) -> None:
+        self.fill_quantity(quantity)
+
+        if size == "small":
+            self.click_on_small_size()
+        elif size == "medium":
+            self.click_on_medium_size()
+        elif size == "large":
+            self.click_on_large_size()
+        elif size == "too_much":
+            self.click_on_size_too_much()
+
+        else:
+            print(f"Warning: '{size}' is not a valid size. Please choose 'small', 'medium', 'large' or 'too_much'")
+            return
+        self.click_on_add_to_cart()
+        self.click_on_continue_shopping()
+
 

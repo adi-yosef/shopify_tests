@@ -15,6 +15,7 @@ class CheckoutPage(UpMenuPage):
         self.pay_now_button = page.get_by_role("button", name="Pay now")
 
         #verify
+        self.error_email_message = page.get_by_text("Enter a valid email")
         self.order_confirmed = page.get_by_role("heading", name="Your order is confirmed")
 
         self.card_number_input = self.page.frame_locator("iframe.card-fields-iframe").nth(0).locator("input[placeholder='Card number']")
@@ -22,11 +23,6 @@ class CheckoutPage(UpMenuPage):
         self.security_code_input = self.page.frame_locator("iframe.card-fields-iframe").nth(2).locator("input[placeholder='Security code']")
         self.name_on_card_input = self.page.frame_locator("iframe.card-fields-iframe").nth(5).locator("input[placeholder='Name on card']")
 
-    def fill_card_details(self, card_number: str, expiration_date:str, security_code: str, name: str):
-        self.card_number_input.fill(card_number)
-        self.expiration_date_input.fill(expiration_date)
-        self.security_code_input.fill(security_code)
-        self.name_on_card_input.fill(name)
 
     def fill_email_phone_box(self, string: str):
         self.email_phone_box.fill(string)
@@ -48,3 +44,39 @@ class CheckoutPage(UpMenuPage):
 
     def wait_for_page_idle(self):
         self.page.wait_for_load_state("networkidle")
+
+    def fill_card_number(self, card_number: str):
+        self.card_number_input.fill(card_number)
+
+    def fill_card_details(
+            self,
+            card_number: str,
+            expiration_date:str,
+            security_code: str,
+            name: str
+    ) -> None:
+        self.card_number_input.fill(card_number)
+        self.expiration_date_input.fill(expiration_date)
+        self.security_code_input.fill(security_code)
+        self.name_on_card_input.fill(name)
+
+    def fill_form_details(
+            self,
+            phone_or_email: str,
+            country: str,
+            last_name: str,
+            address: str,
+            city: str
+    ) -> None:
+        self.fill_email_phone_box(phone_or_email)
+        self.choose_country(country)
+        self.fill_last_name(last_name)
+        self.fill_address(address)
+        self.fill_city(city)
+
+    def check_header_color(self):
+        header = self.page.query_selector('header[role="banner"]')
+        header_color = header.evaluate("header => getComputedStyle(header).color")
+        print(f"Header color: {header_color}")
+        expected_color = 'rgb(255, 0, 0)'
+        expect(header_color).to_be(expected_color, f"Expected header color to be {expected_color}, but got {header_color}")

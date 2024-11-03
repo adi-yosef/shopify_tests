@@ -52,4 +52,25 @@ class DropItBurgerPage(UpMenuPage):
     def click_on_search_result(self):
         self.search_result.click()
 
+    def add_burger_to_cart(
+            self,
+            quantity: str,
+            size: str
+    ) -> None:
+        self.fill_quantity(quantity)
+
+        if size == "small":
+            self.click_on_small_size()
+        elif size == "medium":
+            self.click_on_medium_size()
+        elif size == "large":
+            self.click_on_large_size()
+        elif size == "so_large":
+            self.click_on_size_so_large_size()
+
+        else:
+            print(f"Warning: '{size}' is not a valid size. Please choose 'small', 'medium', 'large' or 'so_large'")
+            return
+        self.click_on_add_to_cart()
+        self.click_on_continue_shopping()
 
