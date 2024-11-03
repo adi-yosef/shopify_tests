@@ -3,6 +3,7 @@ from playwright.sync_api import sync_playwright, Page
 import pytest
 from src.config.config import TestData
 from src.pom.cart_page import CartPage
+from src.pom.checkout_page import CheckoutPage
 from src.pom.dropit_chips_page import DropItChipsPage
 from src.pom.dropit_hamburger_page import DropItBurgerPage
 from src.pom.home_page import HomePage
@@ -66,3 +67,8 @@ def dropit_chips_page(page: Page) -> DropItChipsPage:
 @pytest.fixture
 def cart_page(page: Page) -> CartPage:
     return CartPage(page)
+
+@pytest.fixture
+def checkout_page(page: Page) -> CheckoutPage:
+    return CheckoutPage(page)
+
