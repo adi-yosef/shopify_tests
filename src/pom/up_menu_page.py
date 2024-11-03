@@ -1,4 +1,5 @@
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
+
 
 class UpMenuPage:
     def __init__(self, page: Page) -> None:
@@ -12,6 +13,7 @@ class UpMenuPage:
         self.cart_link = page.get_by_role("link", name="Cart")
         self.search_box = page.get_by_placeholder("Search")
 
+        #verify
         self.cart_link_6_items = page.get_by_role("link", name="Cart 6 items")
 
 
@@ -36,4 +38,3 @@ class UpMenuPage:
 
     def fill_search_box(self, name: str):
         self.search_box.fill(name)
-

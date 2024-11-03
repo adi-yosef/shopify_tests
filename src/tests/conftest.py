@@ -38,7 +38,7 @@ def set_up_tear_down():
         browser.close()
     end_time = datetime.datetime.now()
     elapsed_time = end_time - start_time
-    print(f"Test duration: {elapsed_time.total_seconds():.2f} seconds")
+    print(f"\nTest duration: {elapsed_time.total_seconds():.2f} seconds")
 
 @pytest.fixture
 def page(set_up_tear_down) -> Page:

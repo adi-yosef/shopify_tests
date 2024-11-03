@@ -20,6 +20,7 @@ def test_positive(
     dropit_chips_page.add_chips_to_cart("1", "too_much")
     expect(up_menu_page.cart_link_6_items).to_be_visible()
     dropit_chips_page.click_on_cart_link_6_items()
+    cart_page.verify_we_on_cart_page()
     expect(cart_page.amount_total_33).to_be_visible()
     cart_page.click_on_check_out_button()
     checkout_page.wait_for_page_idle()

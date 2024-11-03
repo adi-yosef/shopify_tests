@@ -17,7 +17,7 @@ def test_negative(
     search_item_and_click_on_it("Dropit Chips (QA Automation)", "Dropit Chips (QA Automation)", dropit_chips_page.page)
     dropit_chips_page.add_chips_to_cart("1", "medium")
     up_menu_page.click_on_cart_link()
-    # need to check on cart page
+    cart_page.verify_we_on_cart_page()
     cart_page.click_on_check_out_button()
     checkout_page.wait_for_page_idle()
     expect(checkout_page.pay_now_button).to_be_visible()
