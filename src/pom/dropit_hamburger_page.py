@@ -34,7 +34,7 @@ class DropItBurgerPage(UpMenuPage):
     def click_on_size_so_large_size(self):
         self.size_so_large.click()
 
-    def fill_quantity(self, num: int):
+    def fill_quantity(self, num: str):
         self.quantity.fill(num)
 
     def click_on_plus_quantity(self):

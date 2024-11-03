@@ -7,11 +7,11 @@ class CartPage(UpMenuPage):
 
         self.check_out_button = page.get_by_role("button", name="Check out")
 
-        #verify
+
         self.amount_total_33 = page.get_by_text("£33.00 GBP")
 
     def click_on_check_out_button(self):
-        self.check_out_button()
+        self.check_out_button.click()
+        print("Click on checkout button")
 
-    def check_total_amount(self):
-        self.amount_total_33()
+

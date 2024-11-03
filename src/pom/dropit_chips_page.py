@@ -34,7 +34,7 @@ class DropItChipsPage(UpMenuPage):
     def click_on_size_too_much(self):
         self.size_too_much.click()
 
-    def fill_quantity(self, num: int):
+    def fill_quantity(self, num: str):
         self.quantity.fill(num)
 
     def click_on_plus_quantity(self):
@@ -47,6 +47,6 @@ class DropItChipsPage(UpMenuPage):
         self.add_to_cart.click()
 
     def click_on_continue_shopping(self):
-        self.continue_shopping()
+        self.continue_shopping.click()
 
 
